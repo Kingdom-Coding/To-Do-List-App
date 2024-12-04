@@ -1,0 +1,95 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  display: grid;
+  place-content: center;
+  min-height: 100svh;
+}
+
+main {
+  display: grid;
+  place-content: center;
+  min-height: 100%;
+  min-width: 100%;
+}
+
+.list-container {
+  position: relative;
+  top: 50px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 500px;
+  width: 500px;
+  margin-bottom: 20px;
+}
+
+.order-list {
+  display: grid;
+  grid-template-rows: min-content;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  justify-content: baseline;
+  height: min-content;
+  margin: 40px;
+  gap: 0.5em;
+}
+
+.list-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2 (repeat(1fr, min-content));
+  height: 20px;
+  gap: 0.5em;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+input {
+  align-self: center;
+  grid-column: 2/3;
+  grid-row: 1/1;
+  height: min-content;
+}
+
+.menu-btn {
+  grid-column: 1/2;
+  grid-row: 1/1;
+  padding-inline: 5px;
+  padding-block: 2px;
+  border: none;
+  height: 20px;
+  width: 20px;
+}
+
+.menu-container {
+  position: absolute;
+  right: 25px;
+  bottom: 0;
+  top: -50px;
+  display: grid;
+  place-content: center;
+  height: min-content;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  border: 3px solid rgb(0, 45, 97);
+  width: max-content;
+  padding: 1em;
+  background-color: rgb(47, 47, 77);
+  gap: 0.5em;
+  z-index: 10;
+}
+
+.btn {
+  padding-inline: 5px;
+}
+
+.add-to-list {
+  width: 150px;
+}
