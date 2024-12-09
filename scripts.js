@@ -9,7 +9,7 @@ const toDoList = (() => {
   //menu elements
   const menuContainer = $(".menu-container");
   const addItemBtn = $(".add-item");
-  const makeChecklistBtn = $(".create-checklist");
+  const crossOutBtn = $(".create-checklist");
   const deleteItemBtn = $(".delete-item");
 
   function functionality() {
@@ -17,7 +17,7 @@ const toDoList = (() => {
     menu();
     addItem();
     addItemValue();
-    makeCheckList();
+    crossOut();
   }
 
   function menu() {
@@ -62,6 +62,10 @@ const toDoList = (() => {
     return menu;
   }
 
+  function getItemValue(item) {
+    return item.val();
+  }
+
   function addItemValue() {
     //close the focused item if it has no value
     $("ol").on("keydown", $("input"), (e) => {
@@ -72,13 +76,12 @@ const toDoList = (() => {
           const newItem = target.val();
           target.blur();
           console.log(newItem);
-          if (target.val() === "") {
+          if (!target.is(".first-item") && target.val() === "") {
             target.parents("li").hide();
           }
         }
       }
     });
-
     /* let previousTarget = null;
     $(document).on("click", (e) => {
 
@@ -112,7 +115,7 @@ const toDoList = (() => {
         const newAddItemBtn = $(
           '<button class="add-item btn">Add Item</button>'
         );
-        const newMakeChecklistBtn = $(
+        const crossOutBtn = $(
           "<button class='create-checklist btn'>Make Checklist</button>"
         );
         const newDeleteItemBtn = $(
@@ -123,37 +126,36 @@ const toDoList = (() => {
 
         newMenuContainer.hide();
 
-        newMenuContainer.append(
-          newAddItemBtn,
-          newMakeChecklistBtn,
-          newDeleteItemBtn
-        );
+        newMenuContainer.append(newAddItemBtn, crossOutBtn, newDeleteItemBtn);
         newLi.append(newMenuContainer, newMenuBtn, newInput);
         ol.append(newLi);
         newInput.focus();
+
+        const newItemValue = getItemValue(newInput);
+
+        if (newItemValue === "") {
+          $(document).on("click", (e) => {
+            if (
+              !$(e.tartet).is(".item") &&
+              !$(e.target).closest(".menu-container").length
+            ) {
+              console.log($(e.target));
+              $(newInput).parent("li").hide();
+              console.log("hid");
+            }
+          });
+        }
       }
     });
   }
 
-  function makeCheckList() {
+  function crossOut() {
     ol.on("click", (e) => {
       const target = $(e.target);
-      if (target.is(".create-checklist")) {
-        const getLiElement = target.parents("li");
-        const getCheckListInput = getLiElement.children(".checkbox");
-        if (getCheckListInput !== true) {
-          const checkListInput = $(
-            '<input class="checkbox item" type="checkbox" />'
-          );
-          getLiElement.append(checkListInput);
-        }
-
-        /*    const getInputElement = getLiElement.children("input");
-        const addCheckListType = getInputElement.attr("type", "checkbox"); */
+      if (target.is($(".cross-out"))) {
+        console.log("hi");
       }
     });
-    /*     const addChecklistAttr = getInputElement.attr("checked", true);
-     */
   }
 
   function deleteItem() {}
