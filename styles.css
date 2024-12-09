@@ -93,3 +93,7 @@ input {
 .add-to-list {
   width: 150px;
 }
+
+.strike {
+  text-decoration: line-through;
+}
