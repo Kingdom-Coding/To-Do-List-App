@@ -16,19 +16,26 @@
       <h1>To Do List</h1>
       <div class="list-container">
         <ol class="order-list">
-          <li class="list-item firstItem items">
-            <div class="menu-container">
-              <button class="add-item btn">Add Item</button>
-              <button class="cross-out btn">Cross Out</button>
-              <button class="delete-item btn">Delete Item</button>
-            </div>
-            <button class="menu-btn btn">*</button>
-            <input
-              class="first-item item"
-              type="text"
-              placeholder="create item"
-            />
-          </li>
+          <div class="item-list">
+            <p class="error-message">You have no items!</p>
+            <li class="list-item first-item items">
+              <div class="menu-container">
+                <button class="add-item btn">Add Item</button>
+                <button class="cross-out btn">Cross Out</button>
+                <button class="delete-item btn">Delete Item</button>
+              </div>
+              <button class="menu-btn btn">*</button>
+              <input
+                class="first-input item"
+                type="text"
+                placeholder="create item"
+              />
+            </li>
+          </div>
+
+          <div class="finished-items-list-container">
+            <p class="finished-items-list">Finished Items</p>
+          </div>
         </ol>
       </div>
     </main>
