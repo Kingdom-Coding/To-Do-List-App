@@ -30,7 +30,7 @@ main {
 
 .order-list {
   display: grid;
-  grid-template-rows: min-content;
+  grid-template-rows: repeat(3, max-content);
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   justify-content: baseline;
@@ -39,11 +39,32 @@ main {
   gap: 0.5em;
 }
 
+.item-list {
+  display: grid;
+  height: min-content;
+  gap: 0.5em;
+}
+
+.error-message {
+  visibility: hidden;
+  text-align: center;
+  grid-row: 1 / 1;
+  grid-column: span 3;
+  color: red;
+}
+
 .list-item {
   position: relative;
   display: grid;
+  grid-row: 2 / 0;
   grid-template-columns: 2 (repeat(1fr, min-content));
   height: 20px;
+  gap: 0.5em;
+}
+
+.new-li {
+  grid-column: 1 / 2;
+  grid-row: 2 / 0;
   gap: 0.5em;
 }
 
@@ -54,13 +75,11 @@ input:focus::placeholder {
 input {
   align-self: center;
   grid-column: 2/3;
-  grid-row: 1/1;
   height: min-content;
 }
 
 .menu-btn {
   grid-column: 1/2;
-  grid-row: 1/1;
   padding-inline: 5px;
   padding-block: 2px;
   border: none;
@@ -96,4 +115,23 @@ input {
 
 .strike {
   text-decoration: line-through;
+  color: hsl(0, 0%, 62%);
+}
+
+.finished-items-list-container {
+  display: grid;
+  grid-template-rows: min-content;
+  grid-column: 1/ 1;
+  font-size: 20px;
+  height: min-content;
+  margin-top: 100px;
+  gap: 0.5em;
+}
+
+.finished-items-list {
+  display: block;
+  grid-row: 1 / 1;
+  align-self: start;
+  margin-bottom: 10px;
+  height: min-content;
 }
